@@ -43,4 +43,14 @@ public class FixPointerIndexOutViewPager extends ViewPager {
         }
         return false;
     }
+
+    @Override
+    public void setCurrentItem(int item) {
+        try {
+            super.setCurrentItem(item);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }
