@@ -408,6 +408,9 @@ public class CarouselViewPager extends LinearLayout implements ViewPager.OnPageC
                     if (mListener != null) {
                         mListener.onCarouseItemClick(position);
                     }
+                    if (mListener2!=null){
+                        mListener2.onCarouseItemClick(v,position);
+                    }
                 }
             });
             container.addView(iv, ViewGroup.LayoutParams.MATCH_PARENT,
@@ -422,13 +425,22 @@ public class CarouselViewPager extends LinearLayout implements ViewPager.OnPageC
     }
 
     private OnCarouselItemClickListener mListener;
+    private OnCarouselItemClickListener2 mListener2;
 
     public void setOnCarouselItemClickListener(OnCarouselItemClickListener listener) {
         this.mListener = listener;
     }
+    public void setOnCarouselItemClickListener2(OnCarouselItemClickListener2 listener) {
+        this.mListener2 = listener;
+    }
+
 
     public interface OnCarouselItemClickListener {
         void onCarouseItemClick(int position);
+    }
+
+    public interface OnCarouselItemClickListener2{
+        void onCarouseItemClick(View view,int position);
     }
 
     private class CarouselHandler extends Handler {
