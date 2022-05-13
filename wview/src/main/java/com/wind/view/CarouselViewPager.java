@@ -19,6 +19,7 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -372,6 +373,9 @@ public class CarouselViewPager extends LinearLayout implements ViewPager.OnPageC
 
             if (path instanceof String) {
                 String url = (String) (items.get(position));
+                ViewCompat.setTransitionName(iv,url);
+                iv.setTag(url);
+
                 if (url.endsWith(".gif")) {
                     Glide.with(mContext)
                             .asGif()
@@ -391,6 +395,8 @@ public class CarouselViewPager extends LinearLayout implements ViewPager.OnPageC
                 //WdImageLoader.display(mContext, iv, (Integer) (items.get(position)), R.drawable.placeholder_bg);
 
                 int resId = (Integer) (items.get(position));
+                ViewCompat.setTransitionName(iv,String.valueOf(resId));
+                iv.setTag(String.valueOf(resId));
                 Glide.with(mContext)
                         .load(resId)
                         .placeholder(R.drawable.placeholder_bg)
